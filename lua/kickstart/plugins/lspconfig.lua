@@ -1,17 +1,17 @@
 return {
-    -- LSP Plugins
-    {
-      -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-      -- used for completion, annotations and signatures of Neovim apis
-      'folke/lazydev.nvim',
-      ft = 'lua',
-      opts = {
-        library = {
-          -- Load luvit types when the `vim.uv` word is found
-          { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-        },
+  -- LSP Plugins
+  {
+    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+    -- used for completion, annotations and signatures of Neovim apis
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        -- Load luvit types when the `vim.uv` word is found
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
       },
     },
+  },
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
@@ -217,12 +217,13 @@ return {
             '--completion-style=detailed',
             '--function-arg-placeholders',
             '--fallback-style=llvm',
+            '--std=c++23', -- Add this line
           },
           init_options = {
             usePlaceholders = true,
             completeUnimported = true,
             clangdFileStatus = true,
-            fallbackFlags = { '-std=c++17' },
+            -- Remove fallbackFlags as it's not the correct way
           },
           settings = {},
         },

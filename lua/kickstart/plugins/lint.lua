@@ -7,13 +7,24 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
-        cpp = { 'cpplint' },
-        c = { 'cpplint' },
-        java = { 'trivy' },
+        -- cpp = { 'cpplint' },
+        -- c = { 'cpplint' },
+        java = { 'semgrep' },
         javascript = { 'eslint_d' },
         text = { 'vale' },
         typescript = { 'eslint_d' },
       }
+
+      -- -- Configure clang-tidy for C++23 with GCC 15 include paths
+      -- lint.linters.clangtidy.args = {
+      --   '--extra-arg=-std=c++23',
+      --   '--extra-arg=-I/usr/lib/gcc/x86_64-redhat-linux/15/../../../../include/c++/15',
+      --   '--extra-arg=-I/usr/lib/gcc/x86_64-redhat-linux/15/../../../../include/c++/15/x86_64-redhat-linux',
+      --   '--extra-arg=-I/usr/lib/gcc/x86_64-redhat-linux/15/../../../../include/c++/15/backward',
+      --   '--extra-arg=-I/usr/lib/gcc/x86_64-redhat-linux/15/include',
+      --   '--extra-arg=-I/usr/local/include',
+      --   '--extra-arg=-I/usr/include',
+      -- }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:

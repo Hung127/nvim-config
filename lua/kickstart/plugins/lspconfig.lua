@@ -209,6 +209,16 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {
+          -- cmd = {
+          --   'clangd',
+          --   '--background-index',
+          --   '--clang-tidy',
+          --   '--header-insertion=iwyu',
+          --   '--completion-style=detailed',
+          --   '--function-arg-placeholders',
+          --   '--fallback-style=llvm',
+          --   '--std=c++23', -- Add this line
+          -- },
           cmd = {
             'clangd',
             '--background-index',
@@ -216,16 +226,38 @@ return {
             '--header-insertion=iwyu',
             '--completion-style=detailed',
             '--function-arg-placeholders',
-            '--fallback-style=llvm',
-            '--std=c++23', -- Add this line
+            '--fallback-style=file',
+            -- Performance optimizations to prevent freezing
+            '--limit-results=50',
+            '--limit-references=100',
+            '--pch-storage=memory',
+            -- Use compile_commands.json for proper C++23 support
+            '--compile-commands-dir=.',
+            '--query-driver=/usr/bin/g++',
+            -- Reduce background activity
+            '--background-index-priority=low',
+            '--all-scopes-completion=false',
+            -- Enable diagnostics with clang-tidy
+            '--enable-config',
           },
           init_options = {
             usePlaceholders = true,
             completeUnimported = true,
             clangdFileStatus = true,
-            -- Remove fallbackFlags as it's not the correct way
+            compilationDatabasePath = '.',
           },
-          settings = {},
+          capabilities = vim.tbl_deep_extend('force', capabilities, {
+            textDocument = {
+              completion = {
+                completionItem = {
+                  snippetSupport = true,
+                  resolveSupport = {
+                    properties = { 'documentation', 'detail' },
+                  },
+                },
+              },
+            },
+          }),
         },
         marksman = {},
         pyright = {},

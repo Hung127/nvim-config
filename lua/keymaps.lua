@@ -6,7 +6,7 @@
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Make Tab to nothing in normal mode
-vim.keymap.set('n', '<Tab>', '')
+-- vim.keymap.set('n', '<Tab>', '')
 
 -- Write to file
 vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = '[W]rite to current file' })

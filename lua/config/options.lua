@@ -23,7 +23,7 @@ vim.opt.incsearch = true
 
 -- update time
 vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 700
 
 -- colors
 vim.opt.termguicolors = true

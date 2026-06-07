@@ -73,3 +73,6 @@ vim.opt.breakindent = true
 
 -- showmode, I've had a status  line installed, do not need show mode any more
 vim.opt.showmode = false
+
+-- stop empty lines from being filled by ~
+vim.opt.fillchars = { eob = " " }

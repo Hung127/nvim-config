@@ -213,7 +213,16 @@ return {
         clangd = {},
         marksman = {},
         pyright = {},
-        jdtls = {},
+        jdtls = {
+          settings = {
+            java = {
+              project = {
+                sourcePaths = { "src", "test" },
+                referencedLibraries = { "lib/**/*.jar" },
+              },
+            },
+          },
+        },
         lua_ls = {
           settings = {
             Lua = {

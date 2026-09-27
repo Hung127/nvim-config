@@ -210,9 +210,12 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        -- software engineering
         clangd = {},
         marksman = {},
+
         pyright = {},
+
         jdtls = {
           settings = {
             java = {
@@ -224,6 +227,14 @@ return {
           },
         },
         kotlin_lsp = {},
+
+        -- devops
+        dockerls = {},
+        bashls = {},
+        yamlls = {},
+        awk_ls = {},
+
+        -- nvim config
         lua_ls = {
           settings = {
             Lua = {
